@@ -2,14 +2,14 @@ import React, { useState, useEffect } from 'react';
 import Hero from '../../components/hero';
 import { getPets } from '../../api/petfinder';
 import Pet from '../../components/pet';
+import { useSearchParams } from 'react-router-dom';
 // Import useSearchParams
 
 const SearchPage = () => {
-
   // Get searchParams object from useSearchParams
 
-  const petNameToFind = 'REPLACE ME';  // Get query parameter using searchParams object
-
+  const [searchParam] = useSearchParams(); // Get query parameter using searchParams object
+  const petNameToFind = searchParam.get('name');
   const [pets, setPets] = useState([]);
 
   useEffect(() => {
